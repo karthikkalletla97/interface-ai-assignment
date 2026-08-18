@@ -1,0 +1,13 @@
+{
+  "status": "hard_failure",
+  "runId": "replay-2026-08-15T19-12-30-272Z",
+  "capabilityId": "member.readSavingsBalance",
+  "steps": [],
+  "escalate": false,
+  "failure": {
+    "step": "inputs",
+    "action": "validate",
+    "expected": "input \"username\"",
+    "observed": "missing required input"
+  }
+}

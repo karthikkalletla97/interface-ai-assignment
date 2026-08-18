@@ -1,0 +1,7 @@
+{"step":1,"action":{"kind":"type","target":0,"text":"teller","why":"Enter the username"},"result":"typed into [0]"}
+{"step":2,"action":{"kind":"type","target":1,"text":"demo1234","why":"Enter the password for the teller account"},"result":"typed into [1]"}
+{"step":3,"action":{"kind":"click","target":2,"why":"Both username and password fields are already filled in correctly. Click Sign in to proceed."},"result":"clicked [2]"}
+{"step":4,"action":{"kind":"navigate","url":"http://localhost:4000/search","why":"Navigate back to the search page to start fresh"},"result":"navigated to http://localhost:4000/search"}
+{"step":5,"action":{"kind":"type","target":0,"text":"100003","why":"Enter member ID 100003 to look up their account"},"result":"typed into [0]"}
+{"step":6,"action":{"kind":"click","target":1,"why":"Click \"Look up\" button to search for member 100003"},"result":"clicked [1]"}
+{"step":7,"action":{"kind":"give_up","reason":"Member 100003 is restricted and cannot be serviced. The page explicitly states \"Member 100003 is restricted and cannot be serviced here.\" Therefore, we cannot look up their savings balance."},"result":"gave up: Member 100003 is restricted and cannot be serviced. The page explicitly states \"Member 100003 is restricted and cannot be serviced here.\" Therefore, we cannot look up their savings balance."}

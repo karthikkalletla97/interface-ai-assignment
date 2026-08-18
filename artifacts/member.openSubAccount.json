@@ -1,0 +1,272 @@
+{
+  "schemaVersion": "1.0",
+  "capability": {
+    "id": "member.openSubAccount",
+    "name": "Open member sub-account",
+    "description": "Sign in, look up a member, and open and confirm a savings sub-account.",
+    "version": 1
+  },
+  "inputs": [
+    {
+      "name": "username",
+      "type": "string",
+      "required": true,
+      "secret": true
+    },
+    {
+      "name": "password",
+      "type": "string",
+      "required": true,
+      "secret": true
+    },
+    {
+      "name": "memberId",
+      "type": "string",
+      "required": true,
+      "secret": false,
+      "example": "100001"
+    },
+    {
+      "name": "deposit",
+      "type": "string",
+      "required": true,
+      "secret": false,
+      "example": "100"
+    }
+  ],
+  "steps": [
+    {
+      "action": "navigate",
+      "url": "http://localhost:4000/login",
+      "risk": "safe"
+    },
+    {
+      "action": "type",
+      "valueFrom": "username",
+      "target": {
+        "primary": {
+          "by": "role",
+          "role": "textbox",
+          "name": "Username"
+        },
+        "fallbacks": [
+          {
+            "by": "nth",
+            "role": "textbox",
+            "index": 0
+          }
+        ],
+        "note": "role + accessible name; falls back to visible text, then position"
+      },
+      "risk": "safe"
+    },
+    {
+      "action": "type",
+      "valueFrom": "password",
+      "target": {
+        "primary": {
+          "by": "role",
+          "role": "textbox",
+          "name": "Password"
+        },
+        "fallbacks": [
+          {
+            "by": "nth",
+            "role": "textbox",
+            "index": 1
+          }
+        ],
+        "note": "role + accessible name; falls back to visible text, then position"
+      },
+      "risk": "safe"
+    },
+    {
+      "action": "click",
+      "target": {
+        "primary": {
+          "by": "role",
+          "role": "button",
+          "name": "Sign in"
+        },
+        "fallbacks": [
+          {
+            "by": "text",
+            "contains": "Sign in"
+          },
+          {
+            "by": "nth",
+            "role": "button",
+            "index": 0
+          }
+        ],
+        "note": "role + accessible name; falls back to visible text, then position"
+      },
+      "risk": "safe"
+    },
+    {
+      "action": "type",
+      "valueFrom": "memberId",
+      "target": {
+        "primary": {
+          "by": "role",
+          "role": "textbox",
+          "name": "Member ID"
+        },
+        "fallbacks": [
+          {
+            "by": "nth",
+            "role": "textbox",
+            "index": 0
+          }
+        ],
+        "note": "role + accessible name; falls back to visible text, then position"
+      },
+      "risk": "safe"
+    },
+    {
+      "action": "click",
+      "target": {
+        "primary": {
+          "by": "role",
+          "role": "button",
+          "name": "Look up"
+        },
+        "fallbacks": [
+          {
+            "by": "text",
+            "contains": "Look up"
+          },
+          {
+            "by": "nth",
+            "role": "button",
+            "index": 0
+          }
+        ],
+        "note": "role + accessible name; falls back to visible text, then position"
+      },
+      "risk": "safe"
+    },
+    {
+      "action": "click",
+      "target": {
+        "primary": {
+          "by": "role",
+          "role": "link",
+          "name": "Open new sub-account"
+        },
+        "fallbacks": [
+          {
+            "by": "text",
+            "contains": "Open new sub-account"
+          },
+          {
+            "by": "nth",
+            "role": "link",
+            "index": 0
+          }
+        ],
+        "note": "role + accessible name; falls back to visible text, then position"
+      },
+      "risk": "safe"
+    },
+    {
+      "action": "type",
+      "valueFrom": "deposit",
+      "target": {
+        "primary": {
+          "by": "role",
+          "role": "textbox",
+          "name": "Opening deposit (USD)"
+        },
+        "fallbacks": [
+          {
+            "by": "nth",
+            "role": "textbox",
+            "index": 0
+          }
+        ],
+        "note": "role + accessible name; falls back to visible text, then position"
+      },
+      "risk": "safe"
+    },
+    {
+      "action": "click",
+      "target": {
+        "primary": {
+          "by": "role",
+          "role": "button",
+          "name": "Review"
+        },
+        "fallbacks": [
+          {
+            "by": "text",
+            "contains": "Review"
+          },
+          {
+            "by": "nth",
+            "role": "button",
+            "index": 0
+          }
+        ],
+        "note": "role + accessible name; falls back to visible text, then position"
+      },
+      "risk": "safe"
+    },
+    {
+      "action": "click",
+      "target": {
+        "primary": {
+          "by": "role",
+          "role": "button",
+          "name": "Confirm and open"
+        },
+        "fallbacks": [
+          {
+            "by": "text",
+            "contains": "Confirm and open"
+          },
+          {
+            "by": "nth",
+            "role": "button",
+            "index": 0
+          }
+        ],
+        "note": "role + accessible name; falls back to visible text, then position"
+      },
+      "risk": "risky"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "reference",
+      "type": "string",
+      "extract": {
+        "by": "labelAdjacent",
+        "label": "Reference"
+      }
+    },
+    {
+      "name": "member",
+      "type": "string",
+      "extract": {
+        "by": "labelAdjacent",
+        "label": "Reference SUB-NHXBOV created for member"
+      }
+    }
+  ],
+  "checkpoint": {
+    "description": "Sub-account opened for member 100001 with a Savings account and $100 opening deposit.",
+    "assert": [
+      {
+        "urlContains": "/member/100001/subaccount/confirm"
+      },
+      {
+        "textContains": "Reference"
+      }
+    ]
+  },
+  "provenance": {
+    "runId": "discovery-2026-08-15T19-50-23-055Z",
+    "distilledAt": "2026-08-15T19:52:42.430Z"
+  }
+}

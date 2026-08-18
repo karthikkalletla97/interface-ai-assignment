@@ -1,0 +1,5 @@
+{
+  "allowedOrigins": ["http://localhost:4000"],
+  "allowedRoutePrefixes": ["/login", "/search"],
+  "allowedActions": ["navigate", "type", "click"]
+}

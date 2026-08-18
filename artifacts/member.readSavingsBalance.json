@@ -1,0 +1,163 @@
+{
+  "schemaVersion": "1.0",
+  "capability": {
+    "id": "member.readSavingsBalance",
+    "name": "Read member savings balance",
+    "description": "Sign in, look up a member by id, and return their savings balance.",
+    "version": 1
+  },
+  "inputs": [
+    {
+      "name": "username",
+      "type": "string",
+      "required": true,
+      "secret": true
+    },
+    {
+      "name": "password",
+      "type": "string",
+      "required": true,
+      "secret": true
+    },
+    {
+      "name": "memberId",
+      "type": "string",
+      "required": true,
+      "secret": false,
+      "example": "100001"
+    }
+  ],
+  "steps": [
+    {
+      "action": "navigate",
+      "url": "http://localhost:4000/login"
+    },
+    {
+      "action": "type",
+      "valueFrom": "username",
+      "target": {
+        "primary": {
+          "by": "role",
+          "role": "textbox",
+          "name": "Username"
+        },
+        "fallbacks": [
+          {
+            "by": "nth",
+            "role": "textbox",
+            "index": 0
+          }
+        ],
+        "note": "role + accessible name; falls back to visible text, then position"
+      }
+    },
+    {
+      "action": "type",
+      "valueFrom": "password",
+      "target": {
+        "primary": {
+          "by": "role",
+          "role": "textbox",
+          "name": "Password"
+        },
+        "fallbacks": [
+          {
+            "by": "nth",
+            "role": "textbox",
+            "index": 0
+          }
+        ],
+        "note": "role + accessible name; falls back to visible text, then position"
+      }
+    },
+    {
+      "action": "click",
+      "target": {
+        "primary": {
+          "by": "role",
+          "role": "button",
+          "name": "Sign in"
+        },
+        "fallbacks": [
+          {
+            "by": "text",
+            "contains": "Sign in"
+          },
+          {
+            "by": "nth",
+            "role": "button",
+            "index": 0
+          }
+        ],
+        "note": "role + accessible name; falls back to visible text, then position"
+      }
+    },
+    {
+      "action": "type",
+      "valueFrom": "memberId",
+      "target": {
+        "primary": {
+          "by": "role",
+          "role": "textbox",
+          "name": "Member ID"
+        },
+        "fallbacks": [
+          {
+            "by": "nth",
+            "role": "textbox",
+            "index": 0
+          }
+        ],
+        "note": "role + accessible name; falls back to visible text, then position"
+      }
+    },
+    {
+      "action": "click",
+      "target": {
+        "primary": {
+          "by": "role",
+          "role": "button",
+          "name": "Look up"
+        },
+        "fallbacks": [
+          {
+            "by": "text",
+            "contains": "Look up"
+          },
+          {
+            "by": "nth",
+            "role": "button",
+            "index": 0
+          }
+        ],
+        "note": "role + accessible name; falls back to visible text, then position"
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "name": "savingsBalance",
+      "type": "string",
+      "extract": {
+        "by": "labelAdjacent",
+        "label": "Savings",
+        "pattern": "\\$[0-9.,]+"
+      }
+    }
+  ],
+  "checkpoint": {
+    "description": "Read savings balance for 100001.",
+    "assert": [
+      {
+        "urlContains": "/member"
+      },
+      {
+        "textContains": "Savings"
+      }
+    ]
+  },
+  "provenance": {
+    "runId": "discovery-2026-08-15T04-20-30-010Z",
+    "distilledAt": "2026-08-15T18:58:14.380Z"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "capability": {
+    "id": "member.openSubAccount",
+    "name": "Open member sub-account",
+    "description": "Sign in, look up a member, and open and confirm a savings sub-account.",
+    "version": 1
+  },
+  "inputs": [
+    {
+      "name": "username",
+      "value": "teller",
+      "type": "string",
+      "secret": true,
+      "required": true
+    },
+    {
+      "name": "password",
+      "value": "demo1234",
+      "type": "string",
+      "secret": true,
+      "required": true
+    },
+    {
+      "name": "memberId",
+      "value": "100001",
+      "type": "string",
+      "secret": false,
+      "required": true
+    },
+    {
+      "name": "deposit",
+      "value": "100",
+      "type": "string",
+      "secret": false,
+      "required": true
+    }
+  ]
+}

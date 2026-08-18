@@ -1,0 +1,26 @@
+{
+  "name": "agent",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Computer-use agent: discovery loop, capability artifact, deterministic replay, safety, escalation.",
+  "scripts": {
+    "discover": "tsx src/cli/discover.ts",
+    "replay": "tsx src/cli/replay.ts",
+    "distill": "tsx src/cli/distill.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.27.0",
+    "@nestjs/common": "^10.3.0",
+    "@nestjs/core": "^10.3.0",
+    "playwright": "^1.45.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1",
+    "zod": "^3.23.0",
+    "@nestjs/config": "^3.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "tsx": "^4.16.0",
+    "typescript": "^5.5.0"
+  }
+}

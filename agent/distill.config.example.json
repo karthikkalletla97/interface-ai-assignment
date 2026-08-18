@@ -1,0 +1,13 @@
+{
+  "capability": {
+    "id": "member.readSavingsBalance",
+    "name": "Read member savings balance",
+    "description": "Sign in, look up a member by id, and return their savings balance.",
+    "version": 1
+  },
+  "inputs": [
+    { "name": "username", "value": "teller",   "type": "string", "secret": true,  "required": true },
+    { "name": "password", "value": "demo1234", "type": "string", "secret": true,  "required": true },
+    { "name": "memberId", "value": "100001",   "type": "string", "secret": false, "required": true }
+  ]
+}

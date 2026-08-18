@@ -1,0 +1,7 @@
+{"step":1,"action":{"kind":"type","target":0,"text":"teller","why":"Enter the username"},"result":"typed into [0]"}
+{"step":2,"action":{"kind":"type","target":1,"text":"demo1234","why":"Enter the password for the teller account"},"result":"typed into [1]"}
+{"step":3,"action":{"kind":"click","target":2,"why":"Username and password are already filled in. Click Sign in to log in."},"result":"clicked [2]"}
+{"step":4,"action":{"kind":"navigate","url":"http://localhost:4000/search","why":"Navigate back to the search page to look up member 999999"},"result":"navigated to http://localhost:4000/search"}
+{"step":5,"action":{"kind":"type","target":0,"text":"999999","why":"Enter member ID 999999 to look up"},"result":"typed into [0]"}
+{"step":6,"action":{"kind":"click","target":1,"why":"Click the \"Look up\" button to search for member 999999"},"result":"clicked [1]"}
+{"step":7,"action":{"kind":"finish","outputs":{"result":"No member found. No record matches member id 999999.","savings_balance":"N/A"},"checkpoint":"Read the savings balance for member 999999","why":"The page clearly states \"No member found - No record matches member id 999999.\" The member does not exist in the system, so there is no savings balance to read."},"result":"finished"}

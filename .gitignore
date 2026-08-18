@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.env
+*.log
+evidence/**/*.tmp
+agent/distill.config.json
+agent/replay.inputs.json
