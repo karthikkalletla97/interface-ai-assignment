@@ -6,7 +6,8 @@
   "scripts": {
     "discover": "tsx src/cli/discover.ts",
     "replay": "tsx src/cli/replay.ts",
-    "distill": "tsx src/cli/distill.ts"
+    "distill": "tsx src/cli/distill.ts",
+    "test": "vitest run"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.27.0",
@@ -21,6 +22,7 @@
   "devDependencies": {
     "@types/node": "^20.14.0",
     "tsx": "^4.16.0",
-    "typescript": "^5.5.0"
+    "typescript": "^5.5.0",
+    "vitest": "^2.0.0"
   }
 }

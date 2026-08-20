@@ -57,10 +57,11 @@ export class ReplayService {
         if (!gate.allowed) {
           return this.hardFailure(runId, capabilityId, log, i + 1, step.action, 'permitted by policy', `POLICY_DENIED: ${gate.reason}`);
         }
-        if (step.risk === 'risky' && !opts.approveRisky) {
+        if (step.risk === 'risky') {
           const control = step.action === 'click' || step.action === 'type' ? step.target.primary.name : step.url;
           if (opts.handoff) {
-            // Live handoff: cede the same session to a human, who performs this step.
+            // Live handoff takes precedence: a human is present to operate the session,
+            // so we always pause here rather than auto-approving.
             const shot = await this.evidence.screenshot(page, runId, `handoff-step-${i + 1}`);
             const intervention = await this.handoff.handle(page, {
               capability: capabilityId,
@@ -76,8 +77,11 @@ export class ReplayService {
             await this.browser.settle();
             continue; // the human performed this step; move to the next
           }
-          // Unattended: no operator present, so stop and request approval.
-          return this.escalated(runId, capabilityId, log, i + 1, step.action, control, 'risky/irreversible action requires human approval');
+          if (!opts.approveRisky) {
+            // Unattended, no approval: stop and request authorization.
+            return this.escalated(runId, capabilityId, log, i + 1, step.action, control, 'risky/irreversible action requires human approval');
+          }
+          // approveRisky: an out-of-band approval is on file; the agent proceeds.
         }
 
         if (step.action === 'navigate') {

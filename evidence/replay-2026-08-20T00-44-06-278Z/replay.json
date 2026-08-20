@@ -1,0 +1,50 @@
+{
+  "status": "hard_failure",
+  "runId": "replay-2026-08-20T00-44-06-278Z",
+  "capabilityId": "member.openSubAccount",
+  "steps": [
+    {
+      "step": 1,
+      "action": "navigate",
+      "result": "ok",
+      "screenshot": "replay-2026-08-20T00-44-06-278Z\\step-01.png"
+    },
+    {
+      "step": 2,
+      "action": "type",
+      "result": "ok",
+      "screenshot": "replay-2026-08-20T00-44-06-278Z\\step-02.png"
+    },
+    {
+      "step": 3,
+      "action": "type",
+      "result": "ok",
+      "screenshot": "replay-2026-08-20T00-44-06-278Z\\step-03.png"
+    },
+    {
+      "step": 4,
+      "action": "click",
+      "result": "ok",
+      "screenshot": "replay-2026-08-20T00-44-06-278Z\\step-04.png"
+    },
+    {
+      "step": 5,
+      "action": "type",
+      "result": "ok",
+      "screenshot": "replay-2026-08-20T00-44-06-278Z\\step-05.png"
+    },
+    {
+      "step": 6,
+      "action": "click",
+      "result": "ok",
+      "screenshot": "replay-2026-08-20T00-44-06-278Z\\step-06.png"
+    }
+  ],
+  "escalate": false,
+  "failure": {
+    "step": 7,
+    "action": "click",
+    "expected": "permitted by policy",
+    "observed": "POLICY_DENIED: route not allowed: /member"
+  }
+}

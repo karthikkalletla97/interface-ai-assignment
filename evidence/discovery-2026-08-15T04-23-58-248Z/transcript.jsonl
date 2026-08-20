@@ -1,7 +1,0 @@
-{"step":1,"action":{"kind":"type","target":0,"text":"teller","why":"Enter the username"},"result":"typed into [0]"}
-{"step":2,"action":{"kind":"type","target":1,"text":"demo1234","why":"Enter the password for the teller account"},"result":"typed into [1]"}
-{"step":3,"action":{"kind":"click","target":2,"why":"Username and password are already filled in correctly. Click Sign in to proceed."},"result":"clicked [2]"}
-{"step":4,"action":{"kind":"navigate","url":"http://localhost:4000/search","why":"Navigate back to the search page to start fresh"},"result":"navigated to http://localhost:4000/search"}
-{"step":5,"action":{"kind":"type","target":0,"text":"100001","why":"Enter member ID 100001 to look up the member"},"result":"typed into [0]"}
-{"step":6,"action":{"kind":"click","target":1,"why":"Click the \"Look up\" button to search for member 100001"},"result":"clicked [1]"}
-{"step":7,"action":{"kind":"finish","outputs":{"savings_balance":"$4250.75"},"checkpoint":"Signed in, looked up member 100001, and read their savings balance.","why":"The page shows member 100001 (Alice Nguyen) with a Savings balance of $4250.75. The goal checkpoint is satisfied."},"result":"finished"}

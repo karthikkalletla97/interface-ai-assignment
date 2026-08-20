@@ -1,0 +1,86 @@
+{
+  "status": "success",
+  "runId": "replay-2026-08-20T00-44-56-859Z",
+  "capabilityId": "member.openSubAccount",
+  "steps": [
+    {
+      "step": 1,
+      "action": "navigate",
+      "result": "ok",
+      "screenshot": "replay-2026-08-20T00-44-56-859Z\\step-01.png"
+    },
+    {
+      "step": 2,
+      "action": "type",
+      "result": "ok",
+      "screenshot": "replay-2026-08-20T00-44-56-859Z\\step-02.png"
+    },
+    {
+      "step": 3,
+      "action": "type",
+      "result": "ok",
+      "screenshot": "replay-2026-08-20T00-44-56-859Z\\step-03.png"
+    },
+    {
+      "step": 4,
+      "action": "click",
+      "result": "ok",
+      "screenshot": "replay-2026-08-20T00-44-56-859Z\\step-04.png"
+    },
+    {
+      "step": 5,
+      "action": "type",
+      "result": "ok",
+      "screenshot": "replay-2026-08-20T00-44-56-859Z\\step-05.png"
+    },
+    {
+      "step": 6,
+      "action": "click",
+      "result": "ok",
+      "screenshot": "replay-2026-08-20T00-44-56-859Z\\step-06.png"
+    },
+    {
+      "step": 7,
+      "action": "click",
+      "result": "ok",
+      "screenshot": "replay-2026-08-20T00-44-56-859Z\\step-07.png"
+    },
+    {
+      "step": 8,
+      "action": "type",
+      "result": "ok",
+      "screenshot": "replay-2026-08-20T00-44-56-859Z\\step-08.png"
+    },
+    {
+      "step": 9,
+      "action": "click",
+      "result": "ok",
+      "screenshot": "replay-2026-08-20T00-44-56-859Z\\step-09.png"
+    },
+    {
+      "step": 10,
+      "action": "click",
+      "result": "performed by human (handoff)",
+      "screenshot": "replay-2026-08-20T00-44-56-859Z\\handoff-step-10.png"
+    }
+  ],
+  "outputs": {
+    "reference": "SUB-I93UZE"
+  },
+  "interventions": [
+    {
+      "step": 10,
+      "control": "Confirm and open",
+      "reason": "risky/irreversible action requires human authorization",
+      "controllerDuring": "human",
+      "before": {
+        "url": "http://localhost:4000/member/100001/subaccount"
+      },
+      "after": {
+        "url": "http://localhost:4000/member/100001/subaccount/confirm"
+      },
+      "changed": true,
+      "at": "2026-08-20T00:45:07.847Z"
+    }
+  ]
+}
